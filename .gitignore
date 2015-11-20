@@ -2,6 +2,8 @@
 *.rbc
 .bundle
 .config
+.ruby-version
+.rubt-gemset
 .yardoc
 Gemfile.lock
 InstalledFiles
