@@ -121,11 +121,13 @@ module DataAnon
         source_table_limited.find_each(:batch_size => @batch_size) do |record|
           index += 1
           begin
+            DataAnon::Utils::DestinationDatabase.establish_connection @dest_database
             process_record_if index, record
           rescue => exception
             @errors.log_error record, exception
           end
           progress.show index
+          DataAnon::Utils::SourceDatabase.establish_connection @source_database
         end
       end
 
